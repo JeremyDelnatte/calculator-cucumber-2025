@@ -17,7 +17,7 @@ public class MyNumber implements Expression
      *
      * @return The integer number contained in the object
      */
-  public Double getValue() { return value; }
+  public double getValue() { return value; }
 
     /**
      * Constructor method
