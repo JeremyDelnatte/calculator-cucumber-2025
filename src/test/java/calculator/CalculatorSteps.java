@@ -107,9 +107,38 @@ public class CalculatorSteps {
 		}
 	}
 
+	@Then("the INFIX notation output should be {string}")
+	public void checkInfixNotation(String expected) {
+		assertNotNull(op);
+		op.notation = Notation.INFIX;
+		String actual = op.toString();
+		System.out.println("INFIX Notation: " + actual);
+		assertEquals(expected, actual);
+	}
+
+	@Then("the PREFIX notation output should be {string}")
+	public void checkPrefixNotation(String expected) {
+		assertNotNull(op);
+		op.notation = Notation.PREFIX;
+		String actual = op.toString();
+		System.out.println("PREFIX Notation: " + actual);
+		assertEquals(expected, actual);
+	}
+
+	@Then("the POSTFIX notation output should be {string}")
+	public void checkPostfixNotation(String expected) {
+		assertNotNull(op);
+		op.notation = Notation.POSTFIX;
+		String actual = op.toString();
+		System.out.println("POSTFIX Notation: " + actual);
+		assertEquals(expected, actual);
+	}
+
 	@Then("the operation evaluates to {int}")
 	public void thenTheOperationEvaluatesTo(int val) {
 		assertEquals(val, c.eval(op));
 	}
 
 }
+
+

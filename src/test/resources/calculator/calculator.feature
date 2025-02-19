@@ -91,3 +91,20 @@ Feature: Integer Arithmetic Expressions
       | "-" | 8| 5|     3|
       | "*" | 7| 2|    14|
       | "/" | 6| 2|     3|
+
+
+  Scenario Outline: Printing arithmetic operations in different notations
+    Given an integer operation "<op>"
+    When I provide a first number <n1>
+    And I provide a second number <n2>
+    Then the INFIX notation output should be "( <n1> <op> <n2> )"
+    And the PREFIX notation output should be "<op> (<n1>, <n2>)"
+    And the POSTFIX notation output should be "(<n1>, <n2>) <op>"
+
+    Examples:
+      | op | n1 | n2 | INFIX  | PREFIX  | POSTFIX  |
+      | +  |  8 |  6 | ( 8 + 6 ) | + (8, 6) | (8, 6) + |
+      | -  |  8 |  6 | ( 8 - 6 ) | - (8, 6) | (8, 6) - |
+      | *  |  8 |  6 | ( 8 * 6 ) | * (8, 6) | (8, 6) * |
+      | /  |  8 |  6 | ( 8 / 6 ) | / (8, 6) | (8, 6) / |
+
