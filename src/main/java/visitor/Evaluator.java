@@ -23,7 +23,7 @@ public class Evaluator extends Visitor {
      *
      * @return an Integer object containing the result of the evaluation
      */
-    public Double getResult() { return computedValue; }
+    public double getResult() { return computedValue; }
 
     /** Use the visitor design pattern to visit a number.
      *
