@@ -28,7 +28,7 @@ public abstract class Operation implements Expression
   /**
    * The neutral element of the operation (e.g. 1 for *, 0 for +)
    */
-  protected int neutral;
+  protected double neutral;
 
   /**
    * The notation used to render operations as strings.
@@ -81,7 +81,7 @@ public abstract class Operation implements Expression
 	 * @param r	second argument of the binary operation
 	 * @return	result of computing the binary operation
 	 */
-   public abstract int op(int l, int r);
+   public abstract double op(double l, double r);
     // the operation itself is specified in the subclasses
 
 	/** Add more parameters to the existing list of parameters
@@ -203,7 +203,7 @@ public abstract class Operation implements Expression
 	public int hashCode()
 	{
 		int result = 5, prime = 31;
-		result = prime * result + neutral;
+		result = prime * result + (int) neutral;
 		result = prime * result + symbol.hashCode();
 		result = prime * result + args.hashCode();
 		return result;

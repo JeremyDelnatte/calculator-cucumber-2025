@@ -46,7 +46,7 @@ public final class Minus extends Operation
      * @param r The second integer that should be subtracted from the first
      * @return The integer that is the result of the subtraction
      */
-  public int op(int l, int r) {
+  public double op(double l, double r) {
   	return (l-r);
   }
 }
