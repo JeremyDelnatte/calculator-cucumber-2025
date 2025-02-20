@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Counter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Calculator with JUnit5 and Cucumber tests</a> &gt; <a href="index.source.html" class="el_package">visitor</a> &gt; <span class="el_source">Counter.java</span></div><h1>Counter.java</h1><pre class="source lang-java linenums">package visitor;
+
+import calculator.Expression;
+import calculator.MyNumber;
+import calculator.Operation;
+
+/**
+ * Counter is a concrete visitor that serves to 
+ * count various aspects of arithmetic expression.
+ * It can count:
+ * &lt;ul&gt;
+ *     &lt;li&gt;The depth of the expression tree&lt;/li&gt;
+ *     &lt;li&gt;The number of operations in the expression&lt;/li&gt;
+ *     &lt;li&gt;The number of numeric values in the expression&lt;/li&gt;
+ * &lt;/ul&gt;
+ * &lt;p&gt;
+ * The specific metric to compute is determined using the {@link CounterMode} enum.
+ * &lt;/p&gt;
+ */
+public class Counter extends Visitor {
+
+    /** The result of the count will be stored in this private variable */
+    private int computedResult;
+
+    /** The mode of the counter that will determine what aspect of the expression to count */
+    private CounterMode mode;
+
+    /**
+     * Creates a {@code Counter} with the specified counting mode.
+     *
+     * @param mode the {@link CounterMode} that determines what aspect of the expression to count
+     */
+<span class="fc" id="L33">    public Counter(CounterMode mode) {</span>
+<span class="fc" id="L34">        this.mode = mode;</span>
+<span class="fc" id="L35">    }</span>
+
+    /**
+     * Sets the mode of the counter.
+     *
+     * @param mode the {@link CounterMode} that determines what aspect of the expression to count
+     */
+    public void setMode(CounterMode mode) {
+<span class="fc" id="L43">        this.mode = mode;</span>
+<span class="fc" id="L44">    }</span>
+
+    /** getter method to obtain the result of the count.
+     *
+     * @return an Integer object containing the result of the count
+     */
+<span class="fc" id="L50">    public Integer getResult() { return computedResult; }</span>
+
+    /** Use the visitor design pattern to visit a number.
+     *
+     *  @param n The number being visited
+     */
+    public void visit(MyNumber n) {
+<span class="fc bfc" id="L57" title="All 4 branches covered.">        computedResult = (mode == CounterMode.DEPTH || mode == CounterMode.OPERATIONS) ? 0 : 1;</span>
+<span class="fc" id="L58">    }</span>
+
+    /** Use the visitor design pattern to visit an operation
+     *
+     *  @param o The operation being visited
+     */
+    public void visit(Operation o) {
+<span class="fc" id="L65">        int result = 0;</span>
+
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        for (Expression e : o.args) {</span>
+<span class="fc" id="L68">            e.accept(this);</span>
+
+<span class="fc bfc" id="L70" title="All 2 branches covered.">            if (mode == CounterMode.DEPTH)</span>
+<span class="fc" id="L71">                result = Math.max(result, computedResult);</span>
+            else
+<span class="fc" id="L73">                result += computedResult;</span>
+<span class="fc" id="L74">        }</span>
+
+<span class="fc bfc" id="L76" title="All 4 branches covered.">        if (mode == CounterMode.DEPTH || mode == CounterMode.OPERATIONS)</span>
+<span class="fc" id="L77">            result++;</span>
+
+<span class="fc" id="L79">        computedResult = result;</span>
+<span class="fc" id="L80">    }</span>
+
+    /**
+     * Represents the different types of counts that can be measured in an arithmetic expression.
+     */
+<span class="fc" id="L85">    public enum CounterMode {</span>
+        /** Counts the maximum depth of the expression tree. */
+<span class="fc" id="L87">        DEPTH,</span>
+
+        /** Counts the number of operations (e.g., +, -, *, /) in the expression. */
+<span class="fc" id="L90">        OPERATIONS,</span>
+
+        /** Counts the number of numeric values in the expression. */
+<span class="fc" id="L93">        NUMBERS</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -27,9 +27,9 @@ public final class Divides extends Operation
     /**
      * The actual computation of the (binary) arithmetic division of two doubles.
      *
-     * @param l The first integer
-     * @param r The second integer that should divide the first
-     * @return The integer that is the result of the division
+     * @param l The first double
+     * @param r The second double that should divide the first
+     * @return The double that is the result of the division
      */
  public double op(double l, double r)
     {

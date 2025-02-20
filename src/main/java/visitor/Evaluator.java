@@ -21,7 +21,7 @@ public class Evaluator extends Visitor {
 
     /** getter method to obtain the result of the evaluation
      *
-     * @return an Integer object containing the result of the evaluation
+     * @return an Double object containing the result of the evaluation
      */
     public double getResult() { return computedValue; }
 

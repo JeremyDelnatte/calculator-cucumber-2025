@@ -25,10 +25,10 @@ public final class Minus extends Operation
   }
 
     /**
-     * The actual computation of the (binary) arithmetic subtraction of two integers
-     * @param l The first integer
-     * @param r The second integer that should be subtracted from the first
-     * @return The integer that is the result of the subtraction
+     * The actual computation of the (binary) arithmetic subtraction of two doubles
+     * @param l The first double
+     * @param r The second double that should be subtracted from the first
+     * @return The double that is the result of the subtraction
      */
   public double op(double l, double r) {
   	return (l-r);

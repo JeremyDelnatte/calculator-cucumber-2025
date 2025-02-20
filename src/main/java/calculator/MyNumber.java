@@ -15,14 +15,14 @@ public class MyNumber implements Expression
 
     /** getter method to obtain the value contained in the object
      *
-     * @return The integer number contained in the object
+     * @return The double number contained in the object
      */
   public double getValue() { return value; }
 
     /**
      * Constructor method
      *
-     * @param v The integer value to be contained in the object
+     * @param v The double value to be contained in the object
      */
     public /*constructor*/ MyNumber(double v) {
 	  value=v;
