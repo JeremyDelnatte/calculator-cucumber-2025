@@ -98,6 +98,18 @@ Feature: Double Arithmetic Expressions
     And I provide a second number 0
     Then the operation evaluates to NaN
 
+  Scenario: Negative division by zero
+    Given an double operation '/'
+    When I provide a first number -5
+    And I provide a second number 0
+    Then the operation evaluates to NaN
+
+  Scenario: Zero divided by zero
+    Given an double operation '/'
+    When I provide a first number 0
+    And I provide a second number 0
+    Then the operation evaluates to NaN
+
   Scenario Outline: Testing notations with two double numbers
     Given an double operation '<operation>'
     When I provide a first number <first_number>
