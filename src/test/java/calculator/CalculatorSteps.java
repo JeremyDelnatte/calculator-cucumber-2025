@@ -114,5 +114,6 @@ public class CalculatorSteps {
 	@Then("the operation evaluates to NaN")
 	public void thenTheOperationEvaluatesToNan() {
 		assertEquals(Double.NaN, c.eval(op), 0.0001);
+		assertTrue(op.args.contains(0));
 	}
 }
