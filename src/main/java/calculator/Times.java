@@ -17,34 +17,19 @@ public final class Times extends Operation
    *
    * @param elist The list of Expressions to multiply
    * @throws IllegalConstruction    If an empty list of expressions if passed as parameter
-   * @see #Times(List<Expression>,Notation)
    */
-  public /*constructor*/ Times(List<Expression> elist) throws IllegalConstruction {
-  	this(elist, null);
-  }
-
-  /**
-   * Class constructor specifying a number of Expressions to multiply,
-   * as well as the Notation used to represent the operation.
-   *
-   * @param elist The list of Expressions to multiply
-   * @param n The Notation to be used to represent the operation
-   * @throws IllegalConstruction    If an empty list of expressions if passed as parameter
-   * @see #Times(List<Expression>)
-   * @see Operation#Operation(List<Expression>,Notation)
-   */
-  public Times(List<Expression> elist, Notation n) throws IllegalConstruction {
-  	super(elist,n);
+  public Times(List<Expression> elist) throws IllegalConstruction {
+  	super(elist);
   	symbol = "*";
   	neutral = 1;
   }
 
   /**
-   * The actual computation of the (binary) arithmetic multiplication of two integers
-   * @param l The first integer
-   * @param r The second integer that should be multiplied with the first
-   * @return The integer that is the result of the multiplication
+   * The actual computation of the (binary) arithmetic multiplication of two doubles
+   * @param l The first double
+   * @param r The second double that should be multiplied with the first
+   * @return The double that is the result of the multiplication
    */
-  public int op(int l, int r)
+  public double op(double l, double r)
     { return (l*r); }
 }

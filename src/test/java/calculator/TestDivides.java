@@ -20,7 +20,6 @@ class TestDivides {
 		  params = Arrays.asList(new MyNumber(value1), new MyNumber(value2));
 		  try {
 		  	op = new Divides(params);
-			op.notation = Notation.INFIX; // reset the notation to infix (which is the default) before each test
 		  }
 		  catch(IllegalConstruction e) { fail(); }
 	}
@@ -47,7 +46,7 @@ class TestDivides {
 		// Two similar expressions, constructed separately (and using different constructors) should be equal
 		List<Expression> p = Arrays.asList(new MyNumber(value1), new MyNumber(value2));
 		try {
-			Divides d = new Divides(p, Notation.INFIX);
+			Divides d = new Divides(p);
 			assertEquals(op, d);
 		}
 		catch(IllegalConstruction e) { fail(); }
@@ -64,7 +63,7 @@ class TestDivides {
 		// Two similar expressions, constructed separately (and using different constructors) should have the same hashcode
 		List<Expression> p = Arrays.asList(new MyNumber(value1), new MyNumber(value2));
 		try {
-			Divides e = new Divides(p, Notation.INFIX);
+			Divides e = new Divides(p);
 			assertEquals(e.hashCode(), op.hashCode());
 		}
 		catch(IllegalConstruction e) { fail(); }
@@ -76,4 +75,28 @@ class TestDivides {
 		assertThrows(IllegalConstruction.class, () -> op = new Divides(params));
 	}
 
+    @Test
+    void testDivisionByZero() {
+		// We test that is does not throw an exception.
+        assertDoesNotThrow(() -> op.op(5.0, 0.0));
+    }
+
+    @Test
+    void testDivisionByZeroReturnsNaN() {
+        double result = op.op(5.0, 0.0);
+        assertTrue(Double.isNaN(result), "Result should be NaN when dividing by zero.");
+    }
+
+    @Test
+    void testNegativeDivisionByZeroReturnsNaN() {
+        double result = op.op(-5.0, 0.0);
+        assertTrue(Double.isNaN(result), "Negative number divided by zero should return NaN.");
+    }
+
+    @Test
+    void testZeroDividedByZeroReturnsNaN() {
+        double result = op.op(0.0, 0.0);
+        assertTrue(Double.isNaN(result), "Zero divided by zero should return NaN.");
+    }
 }
+
