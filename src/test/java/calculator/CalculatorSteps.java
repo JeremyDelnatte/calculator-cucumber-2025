@@ -6,6 +6,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import visitor.Printer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,9 +78,11 @@ public class CalculatorSteps {
 	@Then("^its (.*) notation is (.*)$")
 	public void thenItsNotationIs(String notation, String s) {
 		if (notation.equals("PREFIX") || notation.equals("POSTFIX") || notation.equals("INFIX")) {
-			op.notation = Notation.valueOf(notation);
-			assertEquals(s, op.toString());
-		} else fail(notation + " is not a correct notation! ");
+			Printer p = new Printer(Notation.valueOf(notation));
+			op.accept(p);
+			assertEquals(s, p.getResult());
+		} 
+    else fail(notation + " is not a correct notation! ");
 	}
 
 	@When("^I provide a (.*) number (-?\\d+(?:\\.\\d+)?)$")
