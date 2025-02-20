@@ -92,6 +92,12 @@ Feature: Double Arithmetic Expressions
       | "*" | 7| 2|    14|
       | "/" | 6| 2|     3|
 
+  Scenario: Division by zero
+    Given an double operation '/'
+    When I provide a first number 5
+    And I provide a second number 0
+    Then the operation evaluates to NaN
+
   Scenario Outline: Testing notations with two double numbers
     Given an double operation '<operation>'
     When I provide a first number <first_number>
