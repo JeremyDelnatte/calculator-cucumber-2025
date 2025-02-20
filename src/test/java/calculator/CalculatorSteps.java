@@ -29,8 +29,8 @@ public class CalculatorSteps {
 		c = new Calculator();
 	}
 
-	@Given("an integer operation {string}")
-	public void givenAnIntegerOperation(String s) {
+	@Given("an double operation {string}")
+	public void givenADoubleOperation(String s) {
 		// Write code here that turns the phrase above into concrete actions
 		params = new ArrayList<>(); // create an empty set of parameters to be filled in
 		try {
@@ -50,22 +50,20 @@ public class CalculatorSteps {
 	// The example looks slightly complex, since DataTables can take as input
 	//  tables in two dimensions, i.e. rows and lines. This is why the input
 	//  is a list of lists.
-	@Given("the following list of integer numbers")
+	@Given("the following list of double numbers")
 	public void givenTheFollowingListOfNumbers(List<List<String>> numbers) {
 		params = new ArrayList<>();
 		// Since we only use one line of input, we use get(0) to take the first line of the list,
-		// which is a list of strings, that we will manually convert to integers:
-		numbers.get(0).forEach(n -> params.add(new MyNumber(Integer.parseInt(n))));
+		// which is a list of strings, that we will manually convert to double:
+		numbers.get(0).forEach(n -> params.add(new MyNumber(Double.parseDouble(n))));
 	    params.forEach(n -> System.out.println("value ="+ n));
 		op = null;
 	}
 
 	// The string in the Given annotation shows how to use regular expressions...
 	// In this example, the notation d+ is used to represent numbers, i.e. nonempty sequences of digits
-	@Given("^the sum of two numbers (\\d+) and (\\d+)$")
-	// The alternative, and in this case simpler, notation would be:
-	// @Given("the sum of two numbers {int} and {int}")
-	public void givenTheSum(int n1, int n2) {
+	@Given("the sum of two numbers {double} and {double}")
+	public void givenTheSum(double n1, double n2) {
 		try {
 			params = new ArrayList<>();
 		    params.add(new MyNumber(n1));
@@ -83,16 +81,16 @@ public class CalculatorSteps {
 		else fail(notation + " is not a correct notation! ");
 	}
 
-	@When("^I provide a (.*) number (\\d+)$")
-	public void whenIProvideANumber(String s, int val) {
+	@When("^I provide a (.*) number (-?\\d+(?:\\.\\d+)?)$")
+	public void whenIProvideANumber(String s, double val) {
 		//add extra parameter to the operation
 		params = new ArrayList<>();
 		params.add(new MyNumber(val));
 		op.addMoreParams(params);
 	}
 
-	@Then("^the (.*) is (\\d+)$")
-	public void thenTheOperationIs(String s, int val) {
+	@Then("^the (.*) is (-?\\d+(?:\\.\\d+)?)$")
+	public void thenTheOperationIs(String s, double val) {
 		try {
 			switch (s) {
 				case "sum"			->	op = new Plus(params);
@@ -107,9 +105,9 @@ public class CalculatorSteps {
 		}
 	}
 
-	@Then("the operation evaluates to {int}")
-	public void thenTheOperationEvaluatesTo(int val) {
-		assertEquals(val, c.eval(op));
+	@Then("the operation evaluates to {double}")
+	public void thenTheOperationEvaluatesTo(double val) {
+		assertEquals(val, c.eval(op), 0.0001);	
 	}
 
 }
