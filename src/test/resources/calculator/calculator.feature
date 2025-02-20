@@ -92,8 +92,8 @@ Feature: Double Arithmetic Expressions
       | "*" | 7| 2|    14|
       | "/" | 6| 2|     3|
 
-  Scenario Outline: Testing notations with two integer numbers
-    Given an integer operation '<operation>'
+  Scenario Outline: Testing notations with two double numbers
+    Given an double operation '<operation>'
     When I provide a first number <first_number>
     When I provide a second number <second_number>
     Then its PREFIX notation is <prefix_notation>
@@ -102,7 +102,7 @@ Feature: Double Arithmetic Expressions
 
     Examples:
       | operation | first_number | second_number | prefix_notation | postfix_notation | infix_notation |
-      | +         | 5            | 6            | + (5, 6)        | (5, 6) +        | ( 5 + 6 )     |
-      | -         | 5            | 6            | - (5, 6)        | (5, 6) -        | ( 5 - 6 )     |
-      | *         | 5            | 6            | * (5, 6)        | (5, 6) *        | ( 5 * 6 )     |
-      | /         | 5            | 6            | / (5, 6)        | (5, 6) /        | ( 5 / 6 )     |
+      | +         | 5            | 6            | + (5.0, 6.0)        | (5.0, 6.0) +        | ( 5.0 + 6.0 )     |
+      | -         | 5            | 6            | - (5.0, 6.0)        | (5.0, 6.0) -        | ( 5.0 - 6.0 )     |
+      | *         | 5            | 6            | * (5.0, 6.0)        | (5.0, 6.0) *        | ( 5.0 * 6.0 )     |
+      | /         | 5            | 6            | / (5.0, 6.0)        | (5.0, 6.0) /        | ( 5.0 / 6.0 )     |
