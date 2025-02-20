@@ -25,7 +25,7 @@ public final class Divides extends Operation
   }
 
     /**
-     * The actual computation of the (binary) arithmetic division of two integers
+     * The actual computation of the (binary) arithmetic division of two doubles.
      *
      * @param l The first integer
      * @param r The second integer that should divide the first
@@ -35,11 +35,10 @@ public final class Divides extends Operation
     {
         if (r == 0) {
             System.err.println("Warning: Division by zero detected. Returning NaN.");
-            return Double.NaN; // Retourne NaN au lieu de lever une exception
+
+            // Return NaN if division by zero
+            return Double.NaN;
         }
-        return (double) l / r; }// Convertir en double pour éviter la troncature
-
+        return l / r;
+    }
 }
-
-
-
