@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CalculatorSteps {
-
-//	static final Logger log = getLogger(lookup().lookupClass());
-
 	private ArrayList<Expression> params;
 	private Operation op;
 	private Calculator c;
