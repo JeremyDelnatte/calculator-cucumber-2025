@@ -5,6 +5,8 @@ Code quality: ![Maven Build](https://github.com/JeremyDelnatte/calculator-cucumb
 Test coverage: ![Coverage](.github/badges/jacoco.svg)
 ![Branches](.github/badges/branches.svg)
 
+Security analysis: ![CodeQL](https://github.com/JeremyDelnatte/calculator-cucumber-2025/actions/workflows/codeql.yml/badge.svg)
+
 
 # Calculating arithmetic expressions
 
