@@ -33,4 +33,13 @@ public final class Plus extends Operation
   public double op(double l, double r) {
   	return (l+r);
   }
+
+     /**
+      * @return The result of adding the two numbers
+      * @param left first number to add
+      * @param right second number to add
+      */
+     public double op(Number left, Number right) {
+         return left.doubleValue() + right.doubleValue();
+     }
 }

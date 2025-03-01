@@ -33,4 +33,13 @@ public final class Minus extends Operation
   public double op(double l, double r) {
   	return (l-r);
   }
+
+     /**
+      * @return The result of subtracting the two numbers
+      * @param left first number to subtract
+      * @param right second number to subtract
+      */
+     public double op(Number left, Number right) {
+         return left.doubleValue() - right.doubleValue();
+     }
 }
