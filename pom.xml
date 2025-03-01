@@ -11,6 +11,7 @@
 
     <modules>
         <module>core</module>
+        <module>coverage-module</module>
     </modules>
 
     <properties>
@@ -99,16 +100,6 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                    </execution>
-                    <execution>
-                        <id>report-aggregate</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report-aggregate</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
-                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
