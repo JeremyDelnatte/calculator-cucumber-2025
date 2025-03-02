@@ -41,4 +41,19 @@ public final class Divides extends Operation
         }
         return l / r;
     }
+
+    /**
+     * @param right second number to divide
+     * @param left  first number to divide
+     * @return The result of dividing the two numbers
+     */
+    public MyNumber op(Number left, Number right) {
+        if (right.doubleValue() == 0) {
+            System.err.println("Warning: Division by zero detected. Returning NaN.");
+
+            // Return NaN if division by zero
+            return new MyNumber(Double.NaN);
+        }
+        return new MyNumber( left.doubleValue() / right.doubleValue());
+    }
 }

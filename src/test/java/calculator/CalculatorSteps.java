@@ -100,7 +100,7 @@ public class CalculatorSteps {
 				case "difference" -> op = new Minus(params);
 				default -> fail();
 			}
-			assertEquals(val, c.eval(op));
+			assertEquals(val, c.eval(op).getValue().doubleValue());
 		} catch (IllegalConstruction e) {
 			fail();
 		}
@@ -108,12 +108,12 @@ public class CalculatorSteps {
 
 	@Then("the operation evaluates to {double}")
 	public void thenTheOperationEvaluatesTo(double val) {
-		assertEquals(val, c.eval(op), 0.0001);
+		assertEquals(val, c.eval(op).getValue().doubleValue(), 0.0001);
 	}
 
 	@Then("the operation evaluates to NaN")
 	public void thenTheOperationEvaluatesToNan() {
-		assertEquals(Double.NaN, c.eval(op), 0.0001);
+		assertEquals(Double.NaN, c.eval(op).getValue().doubleValue(), 0.0001);
 	}
 }
 

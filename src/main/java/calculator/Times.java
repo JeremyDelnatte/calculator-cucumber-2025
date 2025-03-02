@@ -30,6 +30,17 @@ public final class Times extends Operation
    * @param r The second double that should be multiplied with the first
    * @return The double that is the result of the multiplication
    */
-  public double op(double l, double r)
-    { return (l*r); }
+  public double op(double l, double r) {
+        return (l*r);
+  }
+
+  /**
+   * @param left  first number to multiply
+   * @param right second number to multiply
+   * @return The result of multiplying the two numbers
+   */
+  public MyNumber op(Number left, Number right) {
+      double result = left.doubleValue() * right.doubleValue();
+      return new MyNumber(result);
+  }
 }

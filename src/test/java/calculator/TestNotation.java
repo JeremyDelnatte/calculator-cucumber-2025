@@ -70,7 +70,7 @@ class TestNotation {
 		}
 
 		// Use printer to test the output of the complex expression
-		String s = "( ( 3.0 + 4.0 + 5.0 ) / ( 5.0 - 4.0 ) / 7.0 )";
+		String s = "( ( 3 + 4 + 5 ) / ( 5 - 4 ) / 7 )";
 		Notation n = Notation.INFIX;
 
 		Printer p = new Printer(n);
@@ -78,14 +78,14 @@ class TestNotation {
 		assertEquals(s, p.getResult());
 
 		// Same but with postfix notation
-		s = "((3.0, 4.0, 5.0) +, (5.0, 4.0) -, 7.0) /";
+		s = "((3, 4, 5) +, (5, 4) -, 7) /";
 		n = Notation.POSTFIX;
 		p.setNotation(n);
 		o.accept(p);
 		assertEquals(s, p.getResult());
 
 		// Same but with prefix notation
-		s = "/ (+ (3.0, 4.0, 5.0), - (5.0, 4.0), 7.0)";
+		s = "/ (+ (3, 4, 5), - (5, 4), 7)";
 		n = Notation.PREFIX;
 		p.setNotation(n);
 		o.accept(p);

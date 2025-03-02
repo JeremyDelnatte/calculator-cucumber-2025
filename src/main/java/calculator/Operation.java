@@ -60,7 +60,7 @@ public abstract class Operation implements Expression
 	 * @param r	second argument of the binary operation
 	 * @return	result of computing the binary operation
 	 */
-   public abstract double op(double l, double r);
+//   public abstract double op(double l, double r);
     // the operation itself is specified in the subclasses
 
 	/** Add more parameters to the existing list of parameters
@@ -126,4 +126,13 @@ public abstract class Operation implements Expression
 		return result;
 	}
 
+	/**
+	 * Abstract method representing the actual binary arithmetic operation to compute
+	 *
+	 * @param left  The first number
+	 * @param right The second number
+	 * @param <T>   The type of the numbers
+	 * @return The result of the operation
+	 */
+	public abstract <T extends Number> MyNumber op(T left, T right);
 }

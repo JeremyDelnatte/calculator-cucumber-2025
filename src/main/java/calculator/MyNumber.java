@@ -4,27 +4,29 @@ import visitor.Visitor;
 
 /**
  * MyNumber is a concrete class that represents arithmetic numbers,
+ * @param <T> The type of the number to be contained in the object
+ * MyNumber is a concrete class that represents arithmetic numbers,
  * which are a special kind of Expressions, just like operations are.
  *
  * @see Expression
  * @see Operation
  */
-public class MyNumber implements Expression
+public class MyNumber<T extends Number> implements Expression
 {
-  private final double value;
+  private final T value;
 
     /** getter method to obtain the value contained in the object
      *
      * @return The double number contained in the object
      */
-  public double getValue() { return value; }
+  public T getValue() { return value; }
 
     /**
      * Constructor method
      *
      * @param v The double value to be contained in the object
      */
-    public /*constructor*/ MyNumber(double v) {
+    public /*constructor*/ MyNumber(T v) {
 	  value=v;
 	  }
 
@@ -70,7 +72,7 @@ public class MyNumber implements Expression
      */
   @Override
   public String toString() {
-	  return Double.toString(value);
+	  return value.toString();
   }
 
   /** Two MyNumber expressions are equal if the values they contain are equal
@@ -89,10 +91,10 @@ public class MyNumber implements Expression
       }
 
       // If the object is of another type then return false
-      if (!(o instanceof MyNumber)) {
+      if (!(o instanceof MyNumber<?> other)) {
             return false;
       }
-      return this.value == ((MyNumber)o).value;
+      return this.value.equals(other.value);
       // Used == since the contained value is a primitive value
       // If it had been a Java object, .equals() would be needed
   }
@@ -105,7 +107,7 @@ public class MyNumber implements Expression
      */
   @Override
   public int hashCode() {
-		return (int)value;
+		return value.hashCode();
   }
 
 }
