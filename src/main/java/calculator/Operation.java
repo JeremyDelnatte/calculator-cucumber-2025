@@ -128,10 +128,11 @@ public abstract class Operation implements Expression
 
 	/**
 	 * Abstract method representing the actual binary arithmetic operation to compute
-	 * @param left The first number
+	 *
+	 * @param left  The first number
 	 * @param right The second number
+	 * @param <T>   The type of the numbers
 	 * @return The result of the operation
-	 * @param <T> The type of the numbers
 	 */
-	public abstract <T extends Number> double op(T left, T right);
+	public abstract <T extends Number> MyNumber op(T left, T right);
 }

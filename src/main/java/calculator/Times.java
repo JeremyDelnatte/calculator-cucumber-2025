@@ -35,11 +35,12 @@ public final class Times extends Operation
   }
 
   /**
-   * @return The result of multiplying the two numbers
-   * @param left first number to multiply
+   * @param left  first number to multiply
    * @param right second number to multiply
+   * @return The result of multiplying the two numbers
    */
-  public double op(Number left, Number right) {
-      return left.doubleValue() * right.doubleValue();
+  public MyNumber op(Number left, Number right) {
+      double result = left.doubleValue() * right.doubleValue();
+      return new MyNumber(result);
   }
 }
